@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Si l'arxiu existeix, retorna'l tal qual.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+) - [PT,L]
+
+# Definim els punts d'entrada a la API
+RewriteRule ^([a-z]+)/? /?list=$1 [L,QSA]
